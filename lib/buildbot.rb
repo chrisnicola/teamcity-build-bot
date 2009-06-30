@@ -40,10 +40,16 @@ class BuildBot
   end
 
   def parse_message(irc, channel, msg, usr)
-    #puts "nick: #{@configuration.nickname}"
     case msg
     when Regexp.new("Hi|hi(.*)#{@configuration.nickname}")
       irc.message(channel, "Hi there, #{usr}")
+    when Regexp.new("#{@configuration.nickname}(.*)status")
+      irc.message(channel, "I am running")
+      irc.message(channel, "Verbose is: #{@verbose}")
+    when /life(.*)universe(.*)everything/
+      irc.message(channel, "42")
+    when /prom/
+      irc.message(channel, "Just take your sister, dum-dum.  She's a girl!")
     when /toggle verbose/
       @verbose = !@verbose
       irc.message(channel, "Ok, verbose is now #{@verbose}")
@@ -53,10 +59,7 @@ class BuildBot
 
   def process_item(item)
 
-    if @items.has_key?(item.guid)
-      print("Item #{item} already known}")
-      return
-    end
+    return if @items.has_key?(item.guid)
     
     @items[item.guid] = item
     if item.failed || @verbose
@@ -66,12 +69,12 @@ class BuildBot
 
   def report_build(item)
     @irc.message(@configuration.channel, "#{item.build} #{item.number} #{item.failed ? 'failed' : 'succeeded'}")
+    @irc.message(@configuration.channel, "#{item.link}")
   end
     
 
   def stop
     @irc.disconnect
-    #@threads.each {|t| t.stop}
   end
 end
 

@@ -13,7 +13,7 @@ class BuildBot
 
   def run
     Thread.abort_on_exception = true
-    @listener.on(:log) {|l, m| print m}
+    @listener.on(:log) {|l, m| print "LIS #{m}\n"}
     @listener.on(:item) {|l, i| process_item(i)}
     @irc.on(:connected) do |irc|
       irc.join(@configuration.channel)

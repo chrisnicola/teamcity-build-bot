@@ -1,0 +1,8 @@
+config:
+  server:     your.server.name 
+  nickname:   buildbot 
+  realname:   buildbot's real name 
+  password:   yourpassword(optional) 
+  channel:    "#build"
+  feed:       http://your.teamcity.build.url 
+  verbose:    false

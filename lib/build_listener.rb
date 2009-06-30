@@ -14,10 +14,14 @@ class BuildListener
   def start
     loop do
       xml = Hpricot.XML(open(@feed_url))
+      count = 0
+
       (xml/:entry).each do |entry|
         process_entry(entry)
+        count += 1
       end
 
+      log("#{count} items received")
       sleep(@sleep_time)
     end
   end
@@ -30,9 +34,6 @@ class BuildListener
     title = (entry/:title).inner_html
     link = (entry/:link).attr("href")
     item = BuildItem.new(title, link)
-#    log("Title: #{title}")
-    #log("Link: #{link}")
-    #log("Item: #{item.build} / #{item.number} / #{item.failed}")
     fire(:item, item)
   end
 

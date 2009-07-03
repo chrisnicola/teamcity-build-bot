@@ -1,0 +1,16 @@
+h1. Team City Build Bot
+
+This little guy will report build failures to your irc channel
+
+h2. How To Get It Running
+
+# Copy bin/config.example.yml to config.yml and enter your details
+# bin/buildbot should start your build server, join your channel and begin operating with you
+
+h2 Commands
+
+*build status*
+
+Will list all known builds
+
+[TODO more coming]

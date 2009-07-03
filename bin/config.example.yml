@@ -1,8 +1,8 @@
 config:
-  server:     your.server.name 
-  nickname:   buildbot 
-  realname:   buildbot's real name 
-  password:   yourpassword(optional) 
+  server:     your.irc.server
+  nickname:   buildbot
+  realname:   buildbot 
+  password:   your.irc.server.password(optional) 
   channel:    "#build"
-  feed:       http://your.teamcity.build.url 
+  feed:       http://your.teamcity.build.feed.url 
   verbose:    false

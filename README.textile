@@ -1,16 +1,30 @@
 h1. Team City Build Bot
 
-This little guy will report build failures to your irc channel
+This little guy will read your TeamCity build RSS feed, and report build failures to your irc channel.
 
 h2. How To Get It Running
 
 # Copy bin/config.example.yml to config.yml and enter your details
-# bin/buildbot should start your build server, join your channel and begin operating with you
+# bin/buildbot should: start your buildbot, join your channel and begin operating with you
 
 h2. Commands
 
+_Note: depending on your TeamCity configuration, buildbot may know about many different build configurations.  In the following examples, "[build]" represents the name of a build configuration on your TeamCity server_
+
 *build status*
 
-> Will list all known builds
+p(. Will list all known build configurations.
 
-[TODO more coming]
+*status of [build]*
+
+p(. Will message the current known status of [build].
+  
+*history of [build]*
+
+p(. Will message the last 10 builds of build [build].
+  
+
+*toggle verbose*
+
+p(. Will flip the verbose bit for more/less information as builds complete. When verbose is true, all builds are reported; when false, only failures are reported.
+

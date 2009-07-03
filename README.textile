@@ -7,10 +7,10 @@ h2. How To Get It Running
 # Copy bin/config.example.yml to config.yml and enter your details
 # bin/buildbot should start your build server, join your channel and begin operating with you
 
-h2 Commands
+h2. Commands
 
 *build status*
 
-Will list all known builds
+> Will list all known builds
 
 [TODO more coming]

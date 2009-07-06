@@ -7,6 +7,7 @@ class BuildRepo
   end
   
   def <<(item)
+    return false if item.nil?
     @builds << item
     if @builds.size > @limit
       puts "I'm shifting"
@@ -26,6 +27,6 @@ class BuildRepo
   end
   
   def currently_failed?
-    latest_build.failed
+    latest_build.nil? ? false : latest_build.failed
   end
 end       

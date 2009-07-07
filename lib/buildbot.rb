@@ -66,6 +66,10 @@ class BuildBot
           report_build(b, false)
         end
       end
+    when /Load Extort:UN/
+      irc.message(channel, "................. *UN contacted*.......")
+      sleep(5)
+      irc.message(channel, "GENTLEMEN! WE HAVE THE DOOMSDAY DEVICE!")
     when /life(.*)universe(.*)everything/
       irc.message(channel, "42")
     when /prom/

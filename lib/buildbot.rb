@@ -54,7 +54,7 @@ class BuildBot
     when Regexp.new("#{@configuration.nickname}(.*) build status")
       irc.message(channel, "Known builds:")
       @repos.keys.each do |k|
-        irc.message(channel, "#{k}: #{@repos[k].latest_build.failed ? 'failed' : 'succeeded'}")
+        irc.message(channel, "#{k}: ##{@repos[k].latest_build.number} #{@repos[k].latest_build.failed ? 'failed' : 'succeeded'}")
       end
     when /status of (.*)/
       if @repos.has_key?($1)
